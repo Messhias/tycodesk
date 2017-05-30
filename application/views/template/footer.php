@@ -1,6 +1,6 @@
 <footer id="footer">
         <div class="container">
-            <figure>Praias Construtora - Todos direitos reservados.</figure>
+            <figure>Francisco Norberto de Lima - Consultor de Vendas da Desktop - Sigmanet - Todos direitos reservados.</figure>
         </div>
     </footer>
 </div>

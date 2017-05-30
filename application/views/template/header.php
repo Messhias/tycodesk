@@ -37,11 +37,11 @@
                         <span class="icon-bar"></span>
                     </button>
                     <div class="navbar-brand nav" id="brand">
-                        <a href="<?=site_url('');?>"><img src="<?=site_url('assets/img/logo.png');?>" alt="Viva Feliz"></a>
+                        <!-- <a href="<?=site_url('');?>"><img src="<?=site_url('assets/img/logo.png');?>" alt="Viva Feliz"></a> -->
                     </div>
                 </div>
                 <div class="pull-right box-phone">
-                    <a href="tel:(11) 2108-9998">(11) 2108-9998</a>
+                    <a href="tel:+55 19 98716-2828​⁠​">+55 19 98716-2828​⁠​</a>
                 </div>
             </header><!-- /.navbar -->
         </div><!-- /.container -->

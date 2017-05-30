@@ -15,7 +15,7 @@ class Welcome extends CI_Controller {
 		$this->load->view('template/header');
 		$this->load->view("sections/slider");
 		$this->load->view('sections/why-choose');
-		$this->load->view("sections/want-more");
+		// $this->load->view("sections/want-more");
 		$this->load->view("sections/contact");
 		$this->load->view('template/footer');
 	}
@@ -83,26 +83,43 @@ class Welcome extends CI_Controller {
 
 	public function contact(){
 
-		$insert = array(
-			'name'			=>	$this->input->post('contact-form-name'),
-			'email'			=>	$this->input->post('contact-form-email'),
-			'message'		=>	$this->input->post('contact-form-message'),
-			'date'			=>  date("Y-m-d"),
-		);
+		// $insert = array(
+		// 	'name'			=>	$this->input->post('contact-form-name'),
+		// 	'email'			=>	$this->input->post('contact-form-email'),
+		// 	'message'		=>	$this->input->post('contact-form-message'),
+		// 	'date'			=>  date("Y-m-d"),
+		// );
+
+		$message = "O ". $this->input->post('contact-form-name');
+		$message .= " entrou em contato através do formulário.\n";
+		$message .= "Informações do contato:\n";		
+
+		$message .= "Nome: " . $this->input->post('contact-form-name') . "\n";
+		$message .= "E-mail: " . $this->input->post('contact-form-email') "\n";
+		$message .= "Endereço: " . $this->input->post('address') . "\n";
+		if ($this->input->post('complement')) {
+			$message .= "Complemento: " . $this->input->post('complement') . "\n";
+		}
+		$message .= "Bairro: " . $this->input->post('neighborhood') . "\n";
+		$message .= "Cidade: " . $this->input->post('city') . "\n";
+		$message .= "CEP: " . $this->input->post('zipcode') . "\n";
+		$message .= "Telefone: " . $this->input->post('tel') . "\n";
+		$message .= "Celular: " . $this->input->post('mobile') . "\n";
+		$message .= "Mensagem:\n";
+		$message .= $this->input->post('contact-form-message');
 
 		$this->load->library('email');
         $this->email->clear();
         $this->email->set_newline("\r\n");
         $this->email->from($this->input->post('email'));
-        $this->email->to("praias@praias.com");
-        $this->email->cc("enzo@praias.com");
-        $this->email->subject('Praia Atlântica - Formulário de contato');
-        $this->email->message($this->input->post('contact-form-message'));
-        if($this->email->send()){
-	        $this->contact_form_model->insert($insert);
+        $this->email->to("mr.tyco@gmail.com");
+        $this->email->subject('Desktop - Formulário de contato');
+        $this->email->message($message);
+        // if($this->email->send()){
+	       //  $this->contact_form_model->insert($insert);
 
-			$this->conversion();
-        }
+        // }
+		$this->conversion();
 
 	}
 
@@ -111,28 +128,13 @@ class Welcome extends CI_Controller {
 			
 			<h1>Obrigado pelo contato e visita!</h1>
 			<p>
+				Obrigado por entrar em contato.
+
+				A partir de agora, iremos verificar qual tecnologia está disponível em sua região (Fibra ótica, ADSL, VDSL ou  rádio) e no prazo máximo de 48 horas entraremos em contato.
+			</p>
+			<p>
 				<a href="<?=site_url('/'); ?>">Voltar ao site</a>
 			</p>
-	
-
-			<!-- Google Code for Atl&acirc;ntica Conversion Page -->
-			<script type="text/javascript">
-			/* <![CDATA[ */
-			var google_conversion_id = 855513986;
-			var google_conversion_language = "en";
-			var google_conversion_format = "3";
-			var google_conversion_color = "ffffff";
-			var google_conversion_label = "tnldCMHBlXEQgrf4lwM";
-			var google_remarketing_only = false;
-			/* ]]> */
-			</script>
-			<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
-			</script>
-			<noscript>
-			<div style="display:inline;">
-			<img height="1" width="1" style="border-style:none;" alt="" src="//www.googleadservices.com/pagead/conversion/855513986/?label=tnldCMHBlXEQgrf4lwM&amp;guid=ON&amp;script=0"/>
-			</div>
-			</noscript>
 
 		<?php
 	}
